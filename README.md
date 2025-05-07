@@ -902,3 +902,383 @@ export default function BankAccountDashboard() {
 
 
 
+//Css File for this 
+
+bank-dashboard.css
+
+/* Reset some basics */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html, #root {
+  height: 100%;
+  background-color: #f3f4f6; /* Tailwind gray-100 */
+}
+
+/* Centering the main container vertically and horizontally */
+.min-h-screen {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* top aligned, use center if vertical center needed */
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Max width and padding */
+.max-w-7xl {
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Header */
+.j1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b; /* Slate-800 */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Tabs container */
+.bg-white.shadow-sm {
+  border-radius: 0.5rem;
+}
+
+.bg-white.shadow-sm .flex {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #e5e7eb;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+}
+
+/* Tab buttons */
+.d1, .t1, .l1 {
+  flex: 1 0 auto;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #64748b; /* gray-500 */
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  border-bottom: 3px solid transparent;
+  text-align: center;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.d1:hover, .t1:hover, .l1:hover,
+.d1:focus, .t1:focus, .l1:focus {
+  color: #2563eb; /* blue-600 */
+  outline: none;
+  border-bottom: 3px solid #2563eb;
+}
+
+/* Active tab style */
+.d1.active, .t1.active, .l1.active {
+  color: #1d4ed8; /* blue-700 */
+  border-bottom: 3px solid #1d4ed8;
+  font-weight: 700;
+}
+
+/* Card styling */
+.bg-white.rounded-lg.shadow {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Balance card */
+.c1 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0f172a; /* Slate-900 */
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.c2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #047857; /* Emerald-600 */
+  text-align: center;
+}
+
+/* Income and Expenses */
+.i1, .e1 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #374151; /* Gray-700 */
+}
+
+.i2, .e2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.i1, .i2 {
+  color: #059669; /* Emerald-600 */
+  text-align: center;
+}
+
+.e1, .e2 {
+  color: #b91c1c; /* Red-700 */
+  text-align: center;
+}
+
+.mt-4.flex.flex-wrap.gap-6 {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+/* Quick action buttons */
+.q1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.flex.flex-wrap.gap-3 {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.h1, .xl, .p1 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  border-radius: 0.5rem;
+  border: none;
+  transition: background-color 0.3s;
+  user-select: none;
+  text-decoration: none;
+}
+
+/* Add Transaction */
+.h1 {
+  background-color: #2563eb;
+  color: white;
+}
+
+.h1:hover {
+  background-color: #1d4ed8;
+}
+
+/* Export CSV */
+.xl {
+  background-color: #1f2937; /* Gray-800 */
+  color: white;
+}
+
+.xl:hover {
+  background-color: #111827;
+}
+
+/* Export PDF */
+.p1 {
+  background-color: #047857;
+  color: white;
+}
+
+.p1:hover {
+  background-color: #065f46;
+}
+
+/* Transactions & Loans Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb; /* Gray-200 */
+  text-align: left;
+  color: #374151; /* Gray-700 */
+  vertical-align: middle;
+}
+
+thead th {
+  background-color: #f9fafb; /* Gray-50 */
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #6b7280; /* Gray-500 */
+  text-transform: uppercase;
+}
+
+tbody tr:hover {
+  background-color: #f3f4f6; /* Gray-100 */
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Transaction Type badges */
+.flex-shrink-0.h-8.w-8 {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-weight: 700;
+}
+
+.bg-green-100 {
+  background-color: #d1fae5;
+  color: #047857;
+}
+
+.bg-red-100 {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(31, 41, 55, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+/* Modal box */
+.modal-backdrop > div {
+  max-width: 420px;
+  width: 100%;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px rgb(0 0 0 / 0.1);
+  overflow: hidden;
+}
+
+/* Modal header */
+.modal-backdrop h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+/* Form inputs */
+.form-input,
+select,
+input[type="date"],
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db; /* Gray-300 */
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #374151; /* Gray-700 */
+  transition: border-color 0.3s;
+}
+
+.form-input:focus,
+select:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgb(37 99 235 / 0.3);
+}
+
+/* Labels */
+label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #374151;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+/* Form buttons */
+.modal-backdrop button[type="submit"],
+.modal-backdrop button[type="button"] {
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
+  display: inline-block;
+}
+
+.modal-backdrop button[type="button"] {
+  background-color: #e5e7eb; /* Gray-200 */
+  color: #374151;
+  margin-right: 0.5rem;
+}
+
+.modal-backdrop button[type="button"]:hover {
+  background-color: #d1d5db;
+}
+
+.modal-backdrop button[type="submit"] {
+  background-color: #2563eb;
+  color: white;
+}
+
+.modal-backdrop button[type="submit"]:hover {
+  background-color: #1d4ed8;
+}
+
+.mt-6.flex.justify-end.gap-3 {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  
+  .px-6, .py-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  /* Smaller tab font for smaller screens */
+  .d1, .t1, .l1 {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+
